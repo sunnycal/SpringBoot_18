@@ -15,8 +15,8 @@ public class User {
     @Column(name = "email", nullable = false)
     private String email;
 
-            @Column(name = "password")
-            private String password;
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "first_name")
     private String firstName;
@@ -98,4 +98,7 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
+
 }
+

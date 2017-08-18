@@ -3,6 +3,8 @@ package com.example.demo;
 import javax.persistence.*;
 import java.util.Collection;
 
+
+
 @Entity
 public class Role {
 
