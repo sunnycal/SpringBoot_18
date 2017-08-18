@@ -10,4 +10,14 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping("/login")
+    public String logn(){
+        return "login";
+    }
+
+    @RequestMapping("/secure")
+    public String secure(){
+        return"secure";
+    }
+
 }
