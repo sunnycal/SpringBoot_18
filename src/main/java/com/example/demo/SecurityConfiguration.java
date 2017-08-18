@@ -11,13 +11,25 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/").access("hasRole('ROLE__USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .httpBasic();
+
+    }
+
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().
-                withUser("user").password("password").roles("USER");
-                // to add additional accounts, remove the semicolon at
-                // the end of the previous command and add an additional user like below:
-                //        .and()
-                //        .withUser("dave").password("begreat").roles("USER")
+                withUser("user").password("password").roles("USER")
+                .and()
+                .withUser("dave").password("begreat").roles("ADMIN");
 
     }
 }
