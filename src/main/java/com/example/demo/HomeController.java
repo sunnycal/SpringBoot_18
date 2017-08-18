@@ -12,7 +12,7 @@ public class HomeController {
 
     @RequestMapping("/login")
     public String logn(){
-        return "logout";
+        return "login";
     }
 
     @RequestMapping("/secure")
